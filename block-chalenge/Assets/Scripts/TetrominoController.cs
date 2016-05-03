@@ -15,52 +15,87 @@ public class TetrominoController : MonoBehaviour
 {
     // Public variables.
     public Board board;
-    //public TetrominoSpawner spawner;
+    public TetrominoSpawner spawner;
 
-    public float fallSpeed = 2f;
+    public float normalFallSpeed = 2f;
+    public float fastFallSpeed = 0.2f;
 
     // Private variables.
-    public Transform atualTetromino;
+    Transform atualTetromino;
     float timecnt = 0;
+    float fallSpeed = 0;
+    public bool fastFall = false;
 
     // Unity functions.
+    void Start()
+    {
+        NextTetromino();
+    }
     void Update ()
     {
+        if (fastFall)
+        {
+            fallSpeed = fastFallSpeed;
+        }
+        else fallSpeed = normalFallSpeed;
         timecnt += Time.deltaTime;
         if (timecnt > fallSpeed)
         {
             timecnt = 0;
             Debug.Log("Fallig...");
-            ClearGrid();
-            atualTetromino.Translate(0,-1,0);
+            //ClearGrid();
+            atualTetromino.Translate(0,-1,0,Space.World);
             if (!IsPositionValid())
             {
-                atualTetromino.Translate(0,1,0);
+                atualTetromino.Translate(0,1,0,Space.World);
+                UpdateGrid();
+                board.CheckFullRows();
+                NextTetromino();
             }
-            UpdateGrid();
+            else 
+            {
+                //UpdateGrid();
+            }
         }
     }
       
     // TetrominoController functions.
+    void NextTetromino()
+    {
+        atualTetromino = spawner.SpawnNext();
+    }
     public void HorizontalyMove(int direction)
     {
-        ClearGrid();
-        atualTetromino.Translate(direction,0,0);
+        //ClearGrid();
+        atualTetromino.Translate(direction,0,0,Space.World);
 
         if (!IsPositionValid())
         {
-            atualTetromino.Translate(-direction,0,0);
+            atualTetromino.Translate(-direction,0,0,Space.World);
         }
-        UpdateGrid();
+        //UpdateGrid();
     }
+    public void Rotate()
+    {
+        ClearGrid();
+        atualTetromino.Rotate(new Vector3(0,0,-90));
+        if (!IsPositionValid())
+        {
+            atualTetromino.Rotate(new Vector3(0,0,90));
+        }
+        //UpdateGrid();
+    }
+
     bool IsPositionValid()
     {
         
         foreach( Transform child in atualTetromino)
         {
-            int x = (int) child.position.x;
-            int y = (int) child.position.y;
-            if (board.grid[x,y] != null || board.IsOutBoard(x,y))
+            int x = Mathf.RoundToInt(child.position.x);
+            int y = Mathf.RoundToInt(child.position.y);
+
+            if (board.IsOutBoard(x,y)) return false;
+            else if (board.grid[x,y] != null )
             {
                 return false;
             }
@@ -72,8 +107,8 @@ public class TetrominoController : MonoBehaviour
     {
         foreach( Transform child in atualTetromino)
         {
-            int x = (int) child.position.x;
-            int y = (int) child.position.y;
+            int x = Mathf.RoundToInt(child.position.x);
+            int y = Mathf.RoundToInt(child.position.y);
             board.grid[x,y] = child;
         }
     }
@@ -81,8 +116,8 @@ public class TetrominoController : MonoBehaviour
     {
         foreach (Transform child in atualTetromino)
         {
-            int x = (int) child.position.x;
-            int y = (int) child.position.y;
+            int x = Mathf.RoundToInt(child.position.x);
+            int y = Mathf.RoundToInt(child.position.y);
             if (board.grid[x,y] != null)
             {
                 board.grid[x,y] = null;
