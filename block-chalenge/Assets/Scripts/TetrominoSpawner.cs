@@ -1,5 +1,4 @@
-/*****************************************************\
-*
+/*****************************************************\ *
 *  Copyright (C) 2016, Douglas Knowman 
 *  douglasknowman@gmail.com
 *
@@ -24,31 +23,33 @@ public class TetrominoSpawner : MonoBehaviour
     public Tetromino[] tetrominos;
     public Vector3 posToSpawn = new Vector3(5,10,0);
     public bool atualTetrominoIsLimitedRot = false;
+    public bool nextTetrominoIsLimitedRot = false;
     // Private variables.
     Transform atualTetromino = null;
     Transform nextTetromino = null;
     // Unity functions.
-    void Start()
-    {
-        
-    }
-    void Update ()
-    {
-    }
-      
+
     // TetrominoSpawner functions.
     public Transform SpawnNext()
     {
-        int index = Random.Range(0,tetrominos.Length);
-
+        //Random selected tetromino;
+        int index = 0;
         atualTetromino = nextTetromino;
+        //update if the tetromino can rotate all 360 degress or not.
+        atualTetrominoIsLimitedRot = nextTetrominoIsLimitedRot;
+
         if (atualTetromino == null)
         {
+            index = Random.Range(0,tetrominos.Length);
             atualTetromino = (Instantiate(tetrominos[index].tetromino,posToSpawn,Quaternion.identity) as GameObject).transform;
+            atualTetrominoIsLimitedRot = tetrominos[index].limitedRotation;
         }
+
+        index = Random.Range(0,tetrominos.Length);
         atualTetromino.gameObject.SetActive(true);
-        atualTetrominoIsLimitedRot = tetrominos[index].limitedRotation;
+
         nextTetromino = (Instantiate(tetrominos[index].tetromino,posToSpawn,Quaternion.identity) as GameObject).transform;
+        nextTetrominoIsLimitedRot = tetrominos[index].limitedRotation;
         nextTetromino.gameObject.SetActive(false);
         return atualTetromino;
     }

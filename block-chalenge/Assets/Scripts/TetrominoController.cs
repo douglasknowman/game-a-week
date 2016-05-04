@@ -44,20 +44,18 @@ public class TetrominoController : MonoBehaviour
         if (timecnt > fallSpeed)
         {
             timecnt = 0;
-            Debug.Log("Fallig...");
-            //ClearGrid();
             atualTetromino.Translate(0,-1,0,Space.World);
             if (!IsPositionValid())
             {
                 atualTetromino.Translate(0,1,0,Space.World);
                 UpdateGrid();
+
+                // Send PieceAcent Event.
+                EventManager.gameEvent(GameEventType.PieceAccent);
+
                 board.CheckFullRows();
                 NextTetromino();
                 ClearParents();
-            }
-            else 
-            {
-                //UpdateGrid();
             }
         }
     }
@@ -75,28 +73,30 @@ public class TetrominoController : MonoBehaviour
             }
         }
     }
+
     void NextTetromino()
     {
         atualTetromino = spawner.SpawnNext();
         parents.Add(atualTetromino);
     }
+
     public void HorizontalyMove(int direction)
     {
-        //ClearGrid();
         atualTetromino.Translate(direction,0,0,Space.World);
 
         if (!IsPositionValid())
         {
             atualTetromino.Translate(-direction,0,0,Space.World);
         }
-        //UpdateGrid();
+        else 
+            EventManager.gameEvent(GameEventType.PieceMove);
     }
     public void Rotate()
     {
-        ClearGrid();
         Debug.Log(spawner.atualTetrominoIsLimitedRot);
         float rotAngle = -90;
-        if (spawner.atualTetrominoIsLimitedRot && atualTetromino.eulerAngles.z > 270 -0.5f)
+        //Limiting the rotation for some tetrominos. when they reach the limit then return.
+        if (spawner.atualTetrominoIsLimitedRot && (atualTetromino.eulerAngles.z-0.2f < 270 && atualTetromino.eulerAngles.z > 1)  )
         {
             rotAngle = 90;
         }
@@ -106,7 +106,6 @@ public class TetrominoController : MonoBehaviour
         {
             atualTetromino.Rotate(new Vector3(0,0,-rotAngle));
         }
-        //UpdateGrid();
     }
 
     bool IsPositionValid()
@@ -133,18 +132,6 @@ public class TetrominoController : MonoBehaviour
             int x = Mathf.RoundToInt(child.position.x);
             int y = Mathf.RoundToInt(child.position.y);
             board.grid[x,y] = child;
-        }
-    }
-    void ClearGrid()
-    {
-        foreach (Transform child in atualTetromino)
-        {
-            int x = Mathf.RoundToInt(child.position.x);
-            int y = Mathf.RoundToInt(child.position.y);
-            if (board.grid[x,y] != null)
-            {
-                board.grid[x,y] = null;
-            }
         }
     }
 }

@@ -44,6 +44,7 @@ public class Board : MonoBehaviour
 
     public void CheckFullRows()
     {
+        int cleanedRows =0;
         for( int y=0; y<height; y++)
         {
             if (IsRowComplete(y))
@@ -51,7 +52,26 @@ public class Board : MonoBehaviour
                 DeleteRow(y);
                 FallRowsAbove(y);
                 y -= 1;
+                cleanedRows += 1;
             }
+        }
+        // Send a Event int the way that more lines cleaned the event is different.
+        switch (cleanedRows)
+        {
+        case 1:
+            EventManager.gameEvent(GameEventType.OneLineClean);
+            break;
+        case 2:
+            EventManager.gameEvent(GameEventType.TwoLineClean);
+            break;
+        case 3:
+            EventManager.gameEvent(GameEventType.ThreeLineClean);
+            break;
+        case 4:
+            EventManager.gameEvent(GameEventType.FourLineClean);
+            break;
+        default:
+            break;
         }
     }
 
