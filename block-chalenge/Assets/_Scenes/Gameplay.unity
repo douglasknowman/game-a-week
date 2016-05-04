@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 270423403}
   spawner: {fileID: 270423406}
-  normalFallSpeed: 0.7
+  normalFallSpeed: 2
   fastFallSpeed: 0.09
   fastFall: 0
 --- !u!114 &270423403
@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3bbe250270104c15935268eea8c8a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenMovement: 0.1
 --- !u!114 &270423406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +170,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tetrominos:
-  - {fileID: 117710, guid: adcab269410914b3591437f814ca5324, type: 2}
-  posToSpawn: {x: 5, y: 10, z: 0}
+  - tetromino: {fileID: 104626, guid: 4dc9a01c3c03d45a5a1df9ece32b3aaf, type: 2}
+    limitedRotation: 1
+  - tetromino: {fileID: 117710, guid: adcab269410914b3591437f814ca5324, type: 2}
+    limitedRotation: 0
+  posToSpawn: {x: 5, y: 15, z: 0}
+  atualTetrominoIsLimitedRot: 0
 --- !u!114 &270423407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ce2e929193d488c8af2515e1c609ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posBehind: -2
+  posBehind: 2
   top: {fileID: 126732, guid: 8d69d68743b664b2ab7da3f66d79d3c8, type: 2}
   bottom: {fileID: 194132, guid: f1d3d0ae034f2420db49783fe1aef720, type: 2}
   right: {fileID: 107572, guid: c8ff45e5efc6640f0b353e264d0cb6f3, type: 2}

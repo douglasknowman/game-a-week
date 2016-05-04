@@ -50,6 +50,7 @@ public class Board : MonoBehaviour
             {
                 DeleteRow(y);
                 FallRowsAbove(y);
+                y -= 1;
             }
         }
     }

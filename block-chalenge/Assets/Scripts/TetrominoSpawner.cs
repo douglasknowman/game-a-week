@@ -11,11 +11,19 @@
 using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
+public struct Tetromino
+{
+    public GameObject tetromino;
+    public bool limitedRotation;
+}
+
 public class TetrominoSpawner : MonoBehaviour
 {
     // Public variables.
-    public GameObject[] tetrominos;
+    public Tetromino[] tetrominos;
     public Vector3 posToSpawn = new Vector3(5,10,0);
+    public bool atualTetrominoIsLimitedRot = false;
     // Private variables.
     Transform atualTetromino = null;
     Transform nextTetromino = null;
@@ -36,10 +44,11 @@ public class TetrominoSpawner : MonoBehaviour
         atualTetromino = nextTetromino;
         if (atualTetromino == null)
         {
-            atualTetromino = (Instantiate(tetrominos[index],posToSpawn,Quaternion.identity) as GameObject).transform;
+            atualTetromino = (Instantiate(tetrominos[index].tetromino,posToSpawn,Quaternion.identity) as GameObject).transform;
         }
         atualTetromino.gameObject.SetActive(true);
-        nextTetromino = (Instantiate(tetrominos[index],posToSpawn,Quaternion.identity) as GameObject).transform;
+        atualTetrominoIsLimitedRot = tetrominos[index].limitedRotation;
+        nextTetromino = (Instantiate(tetrominos[index].tetromino,posToSpawn,Quaternion.identity) as GameObject).transform;
         nextTetromino.gameObject.SetActive(false);
         return atualTetromino;
     }

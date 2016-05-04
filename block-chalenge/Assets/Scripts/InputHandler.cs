@@ -14,8 +14,10 @@ using System.Collections;
 public class InputHandler : MonoBehaviour
 {
     // Public variables.
+    public float timeBetweenMovement = 0.1f;
     // Private variables.
     TetrominoController tetrominoCtl;
+    float timecnt = 0;
     // Unity functions.
     void Start()
     {
@@ -23,13 +25,17 @@ public class InputHandler : MonoBehaviour
     }
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        timecnt += timecnt > 20 ? 0 : Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.A) && timecnt > timeBetweenMovement)
         {
+            timecnt = 0;
             tetrominoCtl.HorizontalyMove(-1);
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && timecnt > timeBetweenMovement)
         {
+            timecnt = 0;
             tetrominoCtl.HorizontalyMove(1);
         }
         tetrominoCtl.fastFall = Input.GetKey(KeyCode.S);

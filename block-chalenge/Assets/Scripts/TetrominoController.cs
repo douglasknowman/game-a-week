@@ -94,10 +94,17 @@ public class TetrominoController : MonoBehaviour
     public void Rotate()
     {
         ClearGrid();
-        atualTetromino.Rotate(new Vector3(0,0,-90));
+        Debug.Log(spawner.atualTetrominoIsLimitedRot);
+        float rotAngle = -90;
+        if (spawner.atualTetrominoIsLimitedRot && atualTetromino.eulerAngles.z > 270 -0.5f)
+        {
+            rotAngle = 90;
+        }
+        atualTetromino.Rotate(new Vector3(0,0,rotAngle));
+
         if (!IsPositionValid())
         {
-            atualTetromino.Rotate(new Vector3(0,0,90));
+            atualTetromino.Rotate(new Vector3(0,0,-rotAngle));
         }
         //UpdateGrid();
     }
