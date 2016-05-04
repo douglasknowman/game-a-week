@@ -10,6 +10,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TetrominoController : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class TetrominoController : MonoBehaviour
 
     // Private variables.
     Transform atualTetromino;
+    List<Transform> parents = new List<Transform>();
     float timecnt = 0;
     float fallSpeed = 0;
     public bool fastFall = false;
@@ -51,6 +53,7 @@ public class TetrominoController : MonoBehaviour
                 UpdateGrid();
                 board.CheckFullRows();
                 NextTetromino();
+                ClearParents();
             }
             else 
             {
@@ -60,9 +63,22 @@ public class TetrominoController : MonoBehaviour
     }
       
     // TetrominoController functions.
+    void ClearParents()
+    {
+        // This function will clear empty game objects in the game.
+        foreach (Transform  parent in parents.ToArray())
+        {
+            if (parent.childCount == 0)
+            {
+                parents.Remove(parent);
+                Destroy(parent.gameObject);
+            }
+        }
+    }
     void NextTetromino()
     {
         atualTetromino = spawner.SpawnNext();
+        parents.Add(atualTetromino);
     }
     public void HorizontalyMove(int direction)
     {
