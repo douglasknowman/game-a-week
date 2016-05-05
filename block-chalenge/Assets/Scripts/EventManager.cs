@@ -13,13 +13,15 @@ using System.Collections;
 
 public enum GameEventType
 {
-    OneLineClean,TwoLineClean,ThreeLineClean,FourLineClean, PieceMove, PieceAccent
+    OneLineClean,TwoLineClean,ThreeLineClean,FourLineClean, PieceMove, PieceAccent, SpawnNewPiece,GameOver
 }
 public delegate void GameEvent(GameEventType type);
+public delegate void GUIUpdate();
 public static class EventManager
 {
     // Public variables.
     public static GameEvent gameEvent;
+    public static GUIUpdate guiUpdate;
     // Private variables.
     // Unity functions.
     static EventManager()

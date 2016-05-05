@@ -21,20 +21,25 @@ public class TetrominoController : MonoBehaviour
     public float normalFallSpeed = 2f;
     public float fastFallSpeed = 0.2f;
 
+    public bool fastFall = false;
     // Private variables.
     Transform atualTetromino;
     List<Transform> parents = new List<Transform>();
     float timecnt = 0;
     float fallSpeed = 0;
-    public bool fastFall = false;
+    bool isRunning = true;
 
     // Unity functions.
     void Start()
     {
         NextTetromino();
     }
+
     void Update ()
     {
+        // if game over dont try to fall the tetromino;
+        if (!isRunning) return;
+
         if (fastFall)
         {
             fallSpeed = fastFallSpeed;
@@ -78,6 +83,11 @@ public class TetrominoController : MonoBehaviour
     {
         atualTetromino = spawner.SpawnNext();
         parents.Add(atualTetromino);
+        if (!IsPositionValid())
+        {
+            isRunning = false;
+            EventManager.gameEvent(GameEventType.GameOver);
+        }
     }
 
     public void HorizontalyMove(int direction)

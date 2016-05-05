@@ -24,9 +24,9 @@ public class TetrominoSpawner : MonoBehaviour
     public Vector3 posToSpawn = new Vector3(5,10,0);
     public bool atualTetrominoIsLimitedRot = false;
     public bool nextTetrominoIsLimitedRot = false;
+    public Transform nextTetromino;
     // Private variables.
     Transform atualTetromino = null;
-    Transform nextTetromino = null;
     // Unity functions.
 
     // TetrominoSpawner functions.
@@ -44,6 +44,7 @@ public class TetrominoSpawner : MonoBehaviour
             atualTetromino = (Instantiate(tetrominos[index].tetromino,posToSpawn,Quaternion.identity) as GameObject).transform;
             atualTetrominoIsLimitedRot = tetrominos[index].limitedRotation;
         }
+        atualTetromino.position = posToSpawn;
 
         index = Random.Range(0,tetrominos.Length);
         atualTetromino.gameObject.SetActive(true);
@@ -51,6 +52,7 @@ public class TetrominoSpawner : MonoBehaviour
         nextTetromino = (Instantiate(tetrominos[index].tetromino,posToSpawn,Quaternion.identity) as GameObject).transform;
         nextTetrominoIsLimitedRot = tetrominos[index].limitedRotation;
         nextTetromino.gameObject.SetActive(false);
+        EventManager.gameEvent(GameEventType.SpawnNewPiece);
         return atualTetromino;
     }
     
