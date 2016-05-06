@@ -22,6 +22,7 @@ public class GUIMenuCalls : MonoBehaviour
     {
         EventManager.gameEvent = null;
         EventManager.guiUpdate = null;
+        EventManager.levelUpEvent = null;
     }
     public void OnLoadMainMenu()
     {

@@ -17,11 +17,14 @@ public enum GameEventType
 }
 public delegate void GameEvent(GameEventType type);
 public delegate void GUIUpdate();
+public delegate void LevelUp(int level);
+
 public static class EventManager
 {
     // Public variables.
     public static GameEvent gameEvent;
     public static GUIUpdate guiUpdate;
+    public static LevelUp levelUpEvent;
     // Private variables.
     // Unity functions.
     static EventManager()

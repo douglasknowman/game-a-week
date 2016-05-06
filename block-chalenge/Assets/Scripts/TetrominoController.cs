@@ -18,8 +18,9 @@ public class TetrominoController : MonoBehaviour
     public Board board;
     public TetrominoSpawner spawner;
 
-    public float normalFallSpeed = 2f;
+    public float startFallSpeed = 1f;
     public float fastFallSpeed = 0.2f;
+    public float leveSpeedLevelSubtraction = 0.09f;
 
     public bool fastFall = false;
     public bool IsRunning 
@@ -27,6 +28,7 @@ public class TetrominoController : MonoBehaviour
         get{return isRunning;}
     }
     // Private variables.
+    int atualLevel = 0;
     Transform atualTetromino;
     List<Transform> parents = new List<Transform>();
     float timecnt = 0;
@@ -37,6 +39,7 @@ public class TetrominoController : MonoBehaviour
     void Start()
     {
         NextTetromino();
+        EventManager.levelUpEvent += OnLevelUp;
     }
 
     void Update ()
@@ -44,11 +47,14 @@ public class TetrominoController : MonoBehaviour
         // if game over dont try to fall the tetromino;
         if (!isRunning) return;
 
+        int vlevel  = atualLevel > 10 ? 10 : atualLevel;
         if (fastFall)
         {
             fallSpeed = fastFallSpeed;
         }
-        else fallSpeed = normalFallSpeed;
+        else
+            fallSpeed = startFallSpeed - (vlevel * leveSpeedLevelSubtraction);
+
         timecnt += Time.deltaTime;
         if (timecnt > fallSpeed)
         {
@@ -74,6 +80,10 @@ public class TetrominoController : MonoBehaviour
     {
         isRunning = !isRunning;
     }
+    void OnLevelUp(int level)
+    {
+        atualLevel = level;
+    }
     void ClearParents()
     {
         // This function will clear empty game objects in the game.
@@ -91,7 +101,8 @@ public class TetrominoController : MonoBehaviour
     {
         atualTetromino = spawner.SpawnNext();
         parents.Add(atualTetromino);
-        if (!IsPositionValid())
+        // TODO absolute values, not cool.
+        if (!IsPositionValid() || atualLevel == 15)
         {
             isRunning = false;
             EventManager.gameEvent(GameEventType.GameOver);

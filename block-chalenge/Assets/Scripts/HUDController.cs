@@ -16,6 +16,7 @@ public class HUDController : MonoBehaviour
 {
     // Public variables.
     public GameController gameCtl;
+    public Text level;
     public Text score;
     public Text oneLine;
     public Text twoLine;
@@ -42,6 +43,8 @@ public class HUDController : MonoBehaviour
         threeLine.text = gameCtl.GetAllScore().threeLinesCleaned.ToString();
         fourLine.text = gameCtl.GetAllScore().fourLinesCleaned.ToString();
         allLine.text = gameCtl.GetAllScore().allLinesCleaned.ToString();
+        level.text  = gameCtl.Level.ToString();
+
     }
     void EventHandler(GameEventType type)
     {
