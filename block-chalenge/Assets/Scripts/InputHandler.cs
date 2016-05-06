@@ -25,6 +25,8 @@ public class InputHandler : MonoBehaviour
     }
     void Update ()
     {
+        //if the game is paused then return.
+        if (!tetrominoCtl.IsRunning) return;
         timecnt += timecnt > 20 ? 0 : Time.deltaTime;
 
         if (Input.GetKey(KeyCode.A) && timecnt > timeBetweenMovement)

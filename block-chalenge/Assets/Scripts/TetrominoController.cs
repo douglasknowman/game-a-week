@@ -22,6 +22,10 @@ public class TetrominoController : MonoBehaviour
     public float fastFallSpeed = 0.2f;
 
     public bool fastFall = false;
+    public bool IsRunning 
+    {
+        get{return isRunning;}
+    }
     // Private variables.
     Transform atualTetromino;
     List<Transform> parents = new List<Transform>();
@@ -66,6 +70,10 @@ public class TetrominoController : MonoBehaviour
     }
       
     // TetrominoController functions.
+    public void TogglePause()
+    {
+        isRunning = !isRunning;
+    }
     void ClearParents()
     {
         // This function will clear empty game objects in the game.

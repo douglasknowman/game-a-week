@@ -52,6 +52,7 @@ public class TetrominoSpawner : MonoBehaviour
         nextTetromino = (Instantiate(tetrominos[index].tetromino,posToSpawn,Quaternion.identity) as GameObject).transform;
         nextTetrominoIsLimitedRot = tetrominos[index].limitedRotation;
         nextTetromino.gameObject.SetActive(false);
+        //Send Event
         EventManager.gameEvent(GameEventType.SpawnNewPiece);
         return atualTetromino;
     }

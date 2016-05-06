@@ -30,9 +30,6 @@ public class HUDController : MonoBehaviour
     {
         EventManager.guiUpdate += UpdateGUI;
         EventManager.gameEvent += EventHandler;
-    }
-    void Start()
-    {
         spawner = gameCtl.gameObject.GetComponent<TetrominoSpawner>();
     }
       

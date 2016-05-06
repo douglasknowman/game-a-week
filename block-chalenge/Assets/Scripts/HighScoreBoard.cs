@@ -13,6 +13,11 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+public struct Record
+{
+    public string name;
+    public int score;
+}
 public class HighScoreBoard : MonoBehaviour
 {
     // Public variables.
@@ -22,7 +27,8 @@ public class HighScoreBoard : MonoBehaviour
     int recordsSaved = 0;
     Transform table;
 
-    SortedDictionary<string,int> board = new SortedDictionary<string,int>();
+    //SortedDictionary<string,int> board = new SortedDictionary<string,int>();
+    List<Record> board = new List<Record>();
     // Unity functions.
     void Update ()
     {
@@ -39,27 +45,27 @@ public class HighScoreBoard : MonoBehaviour
         }
 
         FillBoardWithScores();
-        foreach(KeyValuePair<string,int> x in board)
-        {
-            Debug.Log(x.Key + "__" + x.Value);
-        }
     }
       
     // HighSoreBoard functions.
+    //Sort all keys on dictionary;
+    void SortBoard()
+    {
+        board.Sort((x,y) => x.score.CompareTo(y.score));
+        board.Reverse();
+    }
+
     public void SaveHighScoreBoard(string nick, int score)
     {
-        board.Add(nick,score);
+        Record rec;
+        rec.name = nick;
+        rec.score = score;
+        board.Add(rec);
+        SortBoard();
+
         if (recordsSaved == maxScoreRecords)
         {
-            int count = 0;
-            foreach(KeyValuePair<string,int> x in board)
-            {
-                if (count == maxScoreRecords)
-                {
-                    board.Remove(x.Key);
-                }
-                count += 1;
-            }
+            board.Remove(board[board.Count -1]);
         }
         ClearBoard();
         PlayerPrefs.DeleteAll();
@@ -70,12 +76,18 @@ public class HighScoreBoard : MonoBehaviour
     void SaveBoard()
     {
         int count = 0;
-        foreach(KeyValuePair<string,int> x in board)
+        foreach(Record x in board)
         {
             count += 1;
-            PlayerPrefs.SetString(count+"_Name",x.Key);
-            PlayerPrefs.SetInt(count+"_Score",x.Value);
+            PlayerPrefs.SetString(count+"_Name",x.name);
+            PlayerPrefs.SetInt(count+"_Score",x.score);
         }
+    }
+    public void DeleteAllRecords()
+    {
+        ClearBoard();
+        board.Clear();
+        PlayerPrefs.DeleteAll();
     }
 
     void ClearBoard()
@@ -103,7 +115,10 @@ public class HighScoreBoard : MonoBehaviour
                 name.text = PlayerPrefs.GetString(i+"_Name");
                 score.text = PlayerPrefs.GetInt(i+"_Score").ToString();
                 
-                board.Add(PlayerPrefs.GetString(i+"_Name"),PlayerPrefs.GetInt(i+"_Score"));
+                Record rec;
+                rec.name = PlayerPrefs.GetString(i+"_Name");
+                rec.score = PlayerPrefs.GetInt(i+"_Score");
+                board.Add(rec);
             }
         }
     }

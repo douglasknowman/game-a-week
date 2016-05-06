@@ -11,6 +11,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SaveScoreDialog : MonoBehaviour
 {
@@ -31,7 +32,14 @@ public class SaveScoreDialog : MonoBehaviour
     public void OnSave()
     {
         highScoreBoard.SaveHighScoreBoard(inputField.text,gameCtl.GetAllScore().score);
+        SceneManager.LoadScene(1);
+
     }
+    public void OnCancel()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     void EventHandler(GameEventType type)
     {
         if (type == GameEventType.GameOver)
