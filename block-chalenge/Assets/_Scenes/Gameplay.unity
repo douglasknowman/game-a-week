@@ -382,6 +382,16 @@ MonoBehaviour:
     limitedRotation: 1
   - tetromino: {fileID: 117710, guid: adcab269410914b3591437f814ca5324, type: 2}
     limitedRotation: 0
+  - tetromino: {fileID: 194556, guid: 85fdee19362c6430197903d16f3e4417, type: 2}
+    limitedRotation: 0
+  - tetromino: {fileID: 191256, guid: 8cbe00e22fd404bb78b16f4f5a201287, type: 2}
+    limitedRotation: 0
+  - tetromino: {fileID: 112920, guid: e6ac404bd93e542b88cbb6b917c6d163, type: 2}
+    limitedRotation: 1
+  - tetromino: {fileID: 102724, guid: edabad44f2c0d4f5bbd6cfe885daa649, type: 2}
+    limitedRotation: 1
+  - tetromino: {fileID: 160110, guid: 0da9dadfb360c4f978ed2455f006ae6f, type: 2}
+    limitedRotation: 1
   posToSpawn: {x: 6, y: 16, z: 0}
   atualTetrominoIsLimitedRot: 0
   nextTetrominoIsLimitedRot: 0
@@ -2527,7 +2537,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fourth Lines Cleaned
+  m_Text: Fourfold Lines Cleaned
 --- !u!222 &1860118373
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2886,7 +2896,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 0.019607844}
+  m_BackGroundColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

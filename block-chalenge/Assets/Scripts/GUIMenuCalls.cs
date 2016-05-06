@@ -25,8 +25,7 @@ public class GUIMenuCalls : MonoBehaviour
     }
     public void OnLoadMainMenu()
     {
-        //SceneManager.LoadScene(2);
-        Application.LoadLevel(0);
+        SceneManager.LoadScene(0);
         ClearEventManager();
 
     }
@@ -38,16 +37,18 @@ public class GUIMenuCalls : MonoBehaviour
 
     public void OnLoadHighScoreBoard()
     {
-        //SceneManager.LoadScene(1);
-        Application.LoadLevel(1);
+        SceneManager.LoadScene(1);
         ClearEventManager();
     }
 
     public void OnPlay()
     {
-        //SceneManager.LoadScene(0);
-        Application.LoadLevel(2);
+        SceneManager.LoadScene(2);
         ClearEventManager();
+    }
+    public void OnExit()
+    {
+        Application.Quit();
     }
     public void CangeVolume(float val)
     {
