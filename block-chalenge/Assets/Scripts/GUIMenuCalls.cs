@@ -26,7 +26,7 @@ public class GUIMenuCalls : MonoBehaviour
     public void OnLoadMainMenu()
     {
         //SceneManager.LoadScene(2);
-        Application.LoadLevel(2);
+        Application.LoadLevel(0);
         ClearEventManager();
 
     }
@@ -46,7 +46,7 @@ public class GUIMenuCalls : MonoBehaviour
     public void OnPlay()
     {
         //SceneManager.LoadScene(0);
-        Application.LoadLevel(0);
+        Application.LoadLevel(2);
         ClearEventManager();
     }
     public void CangeVolume(float val)
