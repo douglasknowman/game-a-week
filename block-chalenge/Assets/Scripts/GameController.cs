@@ -85,7 +85,7 @@ public class GameController : MonoBehaviour
             break;
         case GameEventType.FourLineClean:
             scoreBlock.fourLinesCleaned += 1;
-            scoreBlock.score += level * threeLinePoints;
+            scoreBlock.score += level * fourLinePoints;
             scoreBlock.allLinesCleaned += 4;
             break;
         }
