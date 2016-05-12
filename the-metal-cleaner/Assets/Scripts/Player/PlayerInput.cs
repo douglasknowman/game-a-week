@@ -16,10 +16,12 @@ public class PlayerInput : MonoBehaviour
     // Public variables.
     // Private variables.
     CharacterMovement charMove;
+    SpearLauncher spearLauncher;
     // Unity functions.
     void Start()
     {
         charMove = GetComponent<CharacterMovement>();
+        spearLauncher = GetComponent<SpearLauncher>();
     }
     void Update ()
     {
@@ -27,6 +29,11 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             charMove.jump = true;
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            spearLauncher.shoot = true;
         }
         charMove.moveDir = h;
 

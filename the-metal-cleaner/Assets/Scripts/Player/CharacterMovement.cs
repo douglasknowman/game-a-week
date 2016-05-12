@@ -38,6 +38,10 @@ public class CharacterMovement : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce);
             jump = false;
         }
+        else if (!onGround && jump)
+        {
+            jump = false;
+        }
 
         // moving the character to right and left. 
 
