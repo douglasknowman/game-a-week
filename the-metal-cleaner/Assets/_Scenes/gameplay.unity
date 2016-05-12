@@ -200,7 +200,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!61 &245669898
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -298,49 +298,7 @@ Transform:
   - {fileID: 1135632880}
   - {fileID: 1182525196}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
---- !u!1001 &916320641
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 430904, guid: 07957a78c0b4d468a92b470c94a32d5c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 21.2948
-      objectReference: {fileID: 0}
-    - target: {fileID: 430904, guid: 07957a78c0b4d468a92b470c94a32d5c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -4.0759277
-      objectReference: {fileID: 0}
-    - target: {fileID: 430904, guid: 07957a78c0b4d468a92b470c94a32d5c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 430904, guid: 07957a78c0b4d468a92b470c94a32d5c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 430904, guid: 07957a78c0b4d468a92b470c94a32d5c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 430904, guid: 07957a78c0b4d468a92b470c94a32d5c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 430904, guid: 07957a78c0b4d468a92b470c94a32d5c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 430904, guid: 07957a78c0b4d468a92b470c94a32d5c, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 07957a78c0b4d468a92b470c94a32d5c, type: 2}
-  m_IsPrefabParent: 0
+  m_RootOrder: 2
 --- !u!1 &936316951
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +531,8 @@ MonoBehaviour:
   paperPrefab: {fileID: 138360, guid: 07957a78c0b4d468a92b470c94a32d5c, type: 2}
   spawnXRange: {x: -17, y: 17}
   timeBetweekSpawns: 4
-  paperBySpawn: 1
+  paperBySpawnIncrease: 0.2
+  gravitySpeedIncrease: 0.02
 --- !u!4 &1241742072
 Transform:
   m_ObjectHideFlags: 0
@@ -585,7 +544,61 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 4
+--- !u!1 &1532119736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1532119738}
+  - 114: {fileID: 1532119737}
+  - 114: {fileID: 1532119739}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1532119737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1532119736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9be6f29ea274b8c9d60cb353206153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePoints: 100
+  maxLifes: 5
+  paperToNextLevel: 5
+--- !u!4 &1532119738
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1532119736}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.10377473, y: 8.185817, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &1532119739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1532119736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a547ab9cb413448fb2c7bfcb133d703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1960553809
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +662,7 @@ Transform:
   m_Children:
   - {fileID: 198941500}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &1960553813
 MonoBehaviour:
   m_ObjectHideFlags: 0

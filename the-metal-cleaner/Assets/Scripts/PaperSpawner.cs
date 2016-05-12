@@ -17,11 +17,18 @@ public class PaperSpawner : MonoBehaviour
     public GameObject paperPrefab;
     public Vector2 spawnXRange;
     public float timeBetweekSpawns = 4;
-    public int paperBySpawn = 4;
+    public float paperBySpawnIncrease = 0.2f;
+    public float gravitySpeedIncrease = 0.05f;
     // Private variables.
-    float gravitySpeed = 0.1f;
+    float gravitySpeed = 0.05f;
+    int paperBySpawn = 1;
+    float paperBySpawnCounter = 1;
     float timecnt = 0;
     // Unity functions.
+    void Start()
+    {
+        EventManager.gameEvent += EventHandler;
+    }
     void Update ()
     {
         timecnt += Time.deltaTime;
@@ -36,6 +43,15 @@ public class PaperSpawner : MonoBehaviour
     }
       
     // PaperSpawner functions.
+    void EventHandler(GameEventType type, int val)
+    {
+        if (type == GameEventType.LevelUp)
+        {
+            paperBySpawnCounter += paperBySpawnIncrease;
+            paperBySpawn = (int) paperBySpawnCounter;
+            gravitySpeed = val * gravitySpeedIncrease;
+        }
+    }
     void SpawnPaper()
     {
         GameObject obj = Instantiate(paperPrefab,transform.position,Quaternion.identity) as GameObject;

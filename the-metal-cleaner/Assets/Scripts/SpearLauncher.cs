@@ -43,6 +43,11 @@ public class SpearLauncher : MonoBehaviour
         {
             Destroy(col.gameObject);
             atualSpears++;
+            SpearBehaviour spear = col.gameObject.GetComponent<SpearBehaviour>();
+            if (spear.PaperCount > 0 )
+            {
+                EventManager.gameEvent(GameEventType.PapersTaked,spear.PaperCount);
+            }
         }
     }
     // SpearLauncher functions.
