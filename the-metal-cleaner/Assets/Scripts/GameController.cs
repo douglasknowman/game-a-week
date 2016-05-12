@@ -17,11 +17,13 @@ public class GameController : MonoBehaviour
     public int basePoints = 100;
     public int maxLifes = 5;
     public int paperToNextLevel = 15;
+    public int Score {get{return score;}}
     // Private variables.
     int atualLevel = 1;
     int score = 0;
     int lifes;
     int papersTaked = 0;
+    bool paused = false;
     // Unity functions.
     void Start()
     {
@@ -33,6 +35,13 @@ public class GameController : MonoBehaviour
     }
       
     // GameController functions.
+    public void TogglePause()
+    {
+        // Pause the game.
+        paused = !paused;
+        Time.timeScale = 1f-Time.timeScale;
+    }
+
     void EventHandler(GameEventType type, int val)
     {
         if (type == GameEventType.PapersTaked)
@@ -66,6 +75,7 @@ public class GameController : MonoBehaviour
     //GameOver
     void GameOver()
     {
-        Debug.Log("GameOver");
+        EventManager.gameEvent(GameEventType.GameOver,score);
+        TogglePause();
     }
 }

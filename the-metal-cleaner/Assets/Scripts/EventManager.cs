@@ -10,7 +10,7 @@
 
 public enum GameEventType
 {
-    PapersTaked, PaperOnGround, LevelUp, ScoreUp, LifesUp, PapersUp
+    PapersTaked, PaperOnGround, LevelUp, ScoreUp, LifesUp, PapersUp,GameOver
 }
 
 delegate void GameEvent(GameEventType type,int val);
