@@ -61,6 +61,7 @@ public class GameOverPanelGUI : MonoBehaviour
     public void OnRestart()
     {
         EventManager.ClearAll();
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
 }

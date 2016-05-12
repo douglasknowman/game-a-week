@@ -25,10 +25,18 @@ public class GameController : MonoBehaviour
     int papersTaked = 0;
     bool paused = false;
     // Unity functions.
-    void Start()
+    void Awake()
     {
         EventManager.gameEvent += EventHandler;
         lifes = maxLifes;
+
+    }
+    void Start()
+    {
+        EventManager.gameEvent(GameEventType.LevelUp,atualLevel);
+        EventManager.gameEvent(GameEventType.PapersUp,papersTaked);
+        EventManager.gameEvent(GameEventType.LifesUp,lifes);
+        EventManager.gameEvent(GameEventType.ScoreUp,score);
     }
     void Update ()
     {

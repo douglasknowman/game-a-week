@@ -17,7 +17,12 @@ public class PlayerInput : MonoBehaviour
     // Private variables.
     CharacterMovement charMove;
     SpearLauncher spearLauncher;
+    bool inputActivated = true;
     // Unity functions.
+    void Awake()
+    {
+        EventManager.gameEvent += EventHandler;
+    }
     void Start()
     {
         charMove = GetComponent<CharacterMovement>();
@@ -25,6 +30,7 @@ public class PlayerInput : MonoBehaviour
     }
     void Update ()
     {
+        if (!inputActivated) return;
         float h = Input.GetAxis("Horizontal");
         if (Input.GetButtonDown("Jump"))
         {
@@ -40,4 +46,11 @@ public class PlayerInput : MonoBehaviour
     }
       
     // PlayerInput functions.
+    void EventHandler(GameEventType type, int val)
+    {
+        if (type == GameEventType.GameOver)
+        {
+            inputActivated = false;
+        }
+    }
 }
