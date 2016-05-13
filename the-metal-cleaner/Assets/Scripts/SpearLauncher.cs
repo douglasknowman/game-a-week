@@ -31,6 +31,8 @@ public class SpearLauncher : MonoBehaviour
         {
             if (atualSpears > 0)
             {
+                // send sound effect event
+                EventManager.sfxEvent(SfxEventType.Shoot);
                 Launch();
                 atualSpears -= 1;
             }
@@ -46,6 +48,7 @@ public class SpearLauncher : MonoBehaviour
             SpearBehaviour spear = col.gameObject.GetComponent<SpearBehaviour>();
             if (spear.PaperCount > 0 )
             {
+                EventManager.sfxEvent(SfxEventType.SpearTake);
                 EventManager.gameEvent(GameEventType.PapersTaked,spear.PaperCount);
             }
         }

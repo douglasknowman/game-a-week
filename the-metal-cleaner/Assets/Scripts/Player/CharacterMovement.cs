@@ -21,6 +21,7 @@ public class CharacterMovement : MonoBehaviour
     public float moveDir;
     // Private variables.
     bool onGround = false;
+    bool sfxController = false;
     Rigidbody2D rb;
     // Unity functions.
     void Start()
@@ -33,9 +34,17 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         onGround = Physics2D.Raycast(transform.position,Vector2.down,0.7f,1<<8);
+        if (onGround  && sfxController)
+        {
+            EventManager.sfxEvent(SfxEventType.JumpEnd);
+            sfxController = false;
+        }
+        if (!onGround) sfxController = true;
+
         if (onGround && jump)
         {
             rb.AddForce(Vector2.up * jumpForce);
+            EventManager.sfxEvent(SfxEventType.Jump);
             jump = false;
         }
         else if (!onGround && jump)

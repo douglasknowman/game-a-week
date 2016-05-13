@@ -25,6 +25,9 @@ public class SpearBehaviour : MonoBehaviour
     {
         if (col.gameObject.tag == "Ground")
         {
+            // send sound effect event
+            EventManager.sfxEvent(SfxEventType.SpearColl);
+
             GetComponents<Collider2D>()[0].enabled = false;
             GetComponents<Collider2D>()[1].enabled = true;
             Destroy(GetComponent<FixedJoint2D>());
@@ -39,13 +42,21 @@ public class SpearBehaviour : MonoBehaviour
             }
             else
             {
+
                 Destroy(col.gameObject.GetComponent<Rigidbody2D>());
                 Destroy(col.gameObject.GetComponent<Collider2D>());
                 col.transform.SetParent(transform);
+                col.transform.localPosition = new Vector3(paperCount * 0.4f, 0,0);
+
+                // stoping the animation
+                col.gameObject.GetComponent<Animator>().SetBool("isFalling",false);
                 paperCount++;
+                // sound effect event
+                EventManager.sfxEvent(SfxEventType.PaperTake);
             }
 
         }
+        else if (col.gameObject.tag != "Player")  EventManager.sfxEvent(SfxEventType.SpearColl);
     }
       
     // SpearBehaviour functions.

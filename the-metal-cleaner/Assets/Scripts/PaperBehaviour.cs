@@ -25,6 +25,7 @@ public class PaperBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
             EventManager.gameEvent(GameEventType.PaperOnGround,1);
+            EventManager.sfxEvent(SfxEventType.PaperGround);
         }
     }
       

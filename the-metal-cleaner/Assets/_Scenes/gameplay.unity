@@ -225,7 +225,7 @@ GameObject:
   - 224: {fileID: 297030107}
   - 222: {fileID: 297030109}
   - 114: {fileID: 297030108}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - 224: {fileID: 434670205}
   - 222: {fileID: 434670207}
   - 114: {fileID: 434670206}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - 224: {fileID: 510560065}
   - 222: {fileID: 510560067}
   - 114: {fileID: 510560066}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +439,7 @@ GameObject:
   - 223: {fileID: 699029012}
   - 114: {fileID: 699029011}
   - 114: {fileID: 699029010}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ GameObject:
   - 222: {fileID: 719112724}
   - 114: {fileID: 719112723}
   - 114: {fileID: 719112725}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +620,7 @@ GameObject:
   - 224: {fileID: 801049731}
   - 222: {fileID: 801049733}
   - 114: {fileID: 801049732}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -693,7 +693,7 @@ GameObject:
   - 224: {fileID: 831733500}
   - 222: {fileID: 831733502}
   - 114: {fileID: 831733501}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: lastScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,7 +937,7 @@ GameObject:
   - 222: {fileID: 939296416}
   - 114: {fileID: 939296415}
   - 114: {fileID: 939296414}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1057,7 @@ GameObject:
   - 224: {fileID: 939757158}
   - 222: {fileID: 939757160}
   - 114: {fileID: 939757159}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1125,7 +1125,7 @@ GameObject:
   - 222: {fileID: 1013435084}
   - 114: {fileID: 1013435083}
   - 114: {fileID: 1013435085}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ScorePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,7 +1273,7 @@ GameObject:
   - 224: {fileID: 1139506378}
   - 222: {fileID: 1139506380}
   - 114: {fileID: 1139506379}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1346,7 +1346,7 @@ GameObject:
   - 224: {fileID: 1158262181}
   - 222: {fileID: 1158262183}
   - 114: {fileID: 1158262182}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: lifes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1521,7 +1521,7 @@ GameObject:
   - 224: {fileID: 1394248732}
   - 222: {fileID: 1394248734}
   - 114: {fileID: 1394248733}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: paper_taked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1594,6 +1594,7 @@ GameObject:
   - 4: {fileID: 1532119738}
   - 114: {fileID: 1532119737}
   - 114: {fileID: 1532119739}
+  - 114: {fileID: 1532119740}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1638,6 +1639,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a547ab9cb413448fb2c7bfcb133d703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1532119740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1532119736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0283a2e5272194e349f25cf789e4a362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {fileID: 8300000, guid: 18c3e19e9bec949bd806906c2afba518, type: 3}
+  jumpEnd: {fileID: 8300000, guid: 1c9b76b82e80d4d2da78bd01a4aef6c8, type: 3}
+  spearLaunch: {fileID: 8300000, guid: 2e0c80cc91e9c45f799ec8127df02355, type: 3}
+  spearColl: {fileID: 8300000, guid: 791920164e12d455587103a1e10f8dd1, type: 3}
+  spearTaked: {fileID: 8300000, guid: f7c542e66f79f4f498cd8f8ee245f1c1, type: 3}
+  paperGround: {fileID: 8300000, guid: bb14b6470cf6848b88e6395db84cf495, type: 3}
+  paperTaked: {fileID: 8300000, guid: d3eaf22d87d804b71b8577dda0c4c82e, type: 3}
 --- !u!1 &1564363840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,7 +1667,7 @@ GameObject:
   - 224: {fileID: 1564363841}
   - 222: {fileID: 1564363843}
   - 114: {fileID: 1564363842}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1721,7 +1740,7 @@ GameObject:
   - 4: {fileID: 1643625080}
   - 114: {fileID: 1643625082}
   - 114: {fileID: 1643625081}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1780,7 +1799,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1709882729}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1811,7 +1830,7 @@ GameObject:
   - 224: {fileID: 1730258059}
   - 222: {fileID: 1730258061}
   - 114: {fileID: 1730258060}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1884,7 +1903,7 @@ GameObject:
   - 224: {fileID: 1744457421}
   - 222: {fileID: 1744457423}
   - 114: {fileID: 1744457422}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1957,7 +1976,7 @@ GameObject:
   - 224: {fileID: 1769116162}
   - 222: {fileID: 1769116164}
   - 114: {fileID: 1769116163}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2130,7 +2149,7 @@ GameObject:
   - 224: {fileID: 2120135621}
   - 222: {fileID: 2120135623}
   - 114: {fileID: 2120135622}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2197,7 +2216,7 @@ GameObject:
   - 224: {fileID: 2135005591}
   - 222: {fileID: 2135005593}
   - 114: {fileID: 2135005592}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NewRecord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
