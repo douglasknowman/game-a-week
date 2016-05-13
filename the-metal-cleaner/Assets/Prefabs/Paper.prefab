@@ -12,6 +12,7 @@ GameObject:
   - 61: {fileID: 6144334}
   - 50: {fileID: 5068860}
   - 114: {fileID: 11423908}
+  - 95: {fileID: 9552536}
   m_Layer: 10
   m_Name: Paper
   m_TagString: Paper
@@ -62,6 +63,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!95 &9552536
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138360}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 027c92e8e406b4f5c972e460a84b854c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11423908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,7 +117,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 263eb355e14f94bf2b0059d214f40e03, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 880ebb07979064b4dbcf10102bee93bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
