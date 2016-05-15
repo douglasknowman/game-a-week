@@ -21,6 +21,7 @@ public class CharacterMovement : MonoBehaviour
     public float moveDir;
     // Private variables.
     bool onGround = false;
+    bool flipped = false;
     bool sfxController = false;
     Rigidbody2D rb;
     // Unity functions.
@@ -33,7 +34,11 @@ public class CharacterMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        onGround = Physics2D.Raycast(transform.position,Vector2.down,0.7f,1<<8);
+        onGround = Physics2D.Raycast(transform.position,Vector2.down,1.2f,1<<8);
+        flipped = moveDir < 0 ? true : flipped;
+        flipped = moveDir > 0 ? false : flipped;
+        gameObject.GetComponentInChildren<SpriteRenderer>().flipX = flipped;
+        
         if (onGround  && sfxController)
         {
             EventManager.sfxEvent(SfxEventType.JumpEnd);
