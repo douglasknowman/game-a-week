@@ -1,6 +1,6 @@
 # A Game a Week
 These are games of a series where i create a game a week and publish the code here
-on my gitHub account, I have a [blog in Portuguese](http://www.douglasknowman.blogspot.com)
+on my gitHub account, I have a [blog in Portuguese](http://www.oproblemador.blogspot.com)
 which i write and post gameplay videos of the games. If you just want to
 watch the videos, subscribe on my [Youtube channel](https://www.youtube.com/user/srDouglasSilva).
 
