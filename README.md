@@ -14,3 +14,5 @@ __Here a list of all games by week with a brief description.__
 >week01 - A basic tetris clone just for start.
 
 >week02 - A game where you have to collect all papers with a spear before they reach the ground.
+
+>week03 - The player is a litle creature wich needs to take energy from friction with holes along the path to live.
