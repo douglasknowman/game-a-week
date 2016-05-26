@@ -14,6 +14,7 @@ using System.Collections;
 public class HoleWall : MonoBehaviour
 {
     // Public variables.
+    public float frictionHealthGenerated = 30f;
     public Vector2 wallSize = new Vector2(20,15);
     public float holeDepth = -2f;
     public float maxHoleSize = 5f;
@@ -29,9 +30,11 @@ public class HoleWall : MonoBehaviour
     // Private variables.
     private Vector3 holeSize;
     private Vector2 holePos;
+    private GameController gc;
     // Unity functions.
     void Start()
     {
+        gc = GameObject.Find("GameController").GetComponent<GameController>();
         // Calculate hole size.
         
         holeSize = new Vector3(Random.Range(minHoleSize,maxHoleSize),Random.Range(minHoleSize,maxHoleSize),holeDepth);
@@ -60,6 +63,23 @@ public class HoleWall : MonoBehaviour
             //TODO supermaster check of collision here.
             transform.root.GetComponent<ScenarySpawner>().passThrough = true;
             col.gameObject.GetComponent<CharacterController>().isInput  = false;
+            // calculate frication by hole and player size.
+            float xFactor = col.transform.localScale.x - holeSize.x;
+            xFactor = Mathf.Abs(xFactor);
+            xFactor = 1.0f - (xFactor/holeSize.x);
+            gc.HealthPoints += xFactor * frictionHealthGenerated;
+
+            // calculate damage
+            float distance = Vector3.Distance(new Vector3(holePos.x,holePos.y,0),new Vector3(col.transform.position.x,col.transform.position.y,0));
+
+            float averageDistance = (holeSize.x + holeSize.y) /2;
+            float damage = distance/ averageDistance;
+            damage = damage/2;
+            damage = damage > 1?1:damage;
+
+            gc.HealthPoints -= (damage * gc.maxHealthPoints);
+            Debug.DrawLine(new Vector3(holePos.x,holePos.y,transform.position.z),col.transform.position,Color.red,1);
+            Debug.Log(damage);
         }
     }
 

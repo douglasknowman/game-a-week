@@ -45,7 +45,7 @@ MonoBehaviour:
   minHoleSize: 1
   uvMultiplier: 2
   material: {fileID: 2100000, guid: 70736ab8e592043ccbaa32bfeff6dc28, type: 2}
-  timeToDestroy: 5
+  timeToDestroy: 3
   relativeNoHoleBoader: 0.2
 --- !u!1001 &100100000
 Prefab:

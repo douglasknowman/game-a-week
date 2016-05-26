@@ -209,6 +209,7 @@ MonoBehaviour:
   minCharSize: 1
   minCharPos: {x: 1, y: 1}
   maxCharPos: {x: 12, y: 12}
+  isInput: 1
 --- !u!54 &769265062
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -380,6 +381,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1884014108}
   - 114: {fileID: 1884014107}
+  - 114: {fileID: 1884014109}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -416,3 +418,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1884014109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884014106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2af90799bfaf48568b5e385a1fe2a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoints: 100
