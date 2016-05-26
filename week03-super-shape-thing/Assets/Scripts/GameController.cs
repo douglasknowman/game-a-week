@@ -24,8 +24,13 @@ public class GameController : MonoBehaviour
             if (value < 0) GameOver();
         }
     }
+    public int Points
+    {
+        get{return points;}
+    }
     // Private variables.
     private float healthPoints;
+    private int points;
     // Unity functions.
     void Start()
     {
