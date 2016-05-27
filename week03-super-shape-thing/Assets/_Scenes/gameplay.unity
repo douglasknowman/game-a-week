@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.04
+  m_FogDensity: 0.03
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -434,7 +434,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 769265058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.5, y: 7.5, z: 0}
+  m_LocalPosition: {x: 7, y: 7.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 70428181}
@@ -457,8 +457,8 @@ MonoBehaviour:
   changeShapeSpeed: 6
   maxCharSize: 5
   minCharSize: 1
-  minCharPos: {x: 1, y: 1}
-  maxCharPos: {x: 12, y: 12}
+  minCharPos: {x: 2.7, y: 4}
+  maxCharPos: {x: 13.5, y: 13.5}
   isInput: 1
 --- !u!54 &769265062
 Rigidbody:
@@ -1164,9 +1164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 182834, guid: 4dcda9bf34aa0427cb0b7cc3e4dba976, type: 2}
-  backgroundPrefab: {fileID: 0}
   wallDistance: 20
-  moveSpeed: 7
+  moveSpeed: 6
   passThroughSpeed: 5
   passThrough: 0
   bgx: {fileID: 1960352246}

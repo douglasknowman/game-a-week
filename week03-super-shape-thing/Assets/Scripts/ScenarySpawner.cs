@@ -15,18 +15,17 @@ public class ScenarySpawner : MonoBehaviour
 {
     // Public variables.
     public GameObject wallPrefab;
-    public GameObject backgroundPrefab;
     public float wallDistance = 10f;
     public float moveSpeed = 3f;
     public float passThroughSpeed =2f;
     public bool passThrough = false;
+    public  Transform bgx;
+    public  Transform bgy;
+    public  Transform bgz;
 
     // Private variables.
     private Transform wallx;
     private Transform wally;
-    public  Transform bgx;
-    public  Transform bgy;
-    public  Transform bgz;
     // Unity functions.
     void Start()
     {

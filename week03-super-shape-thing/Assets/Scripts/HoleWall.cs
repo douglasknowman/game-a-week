@@ -26,8 +26,11 @@ public class HoleWall : MonoBehaviour
     [Range(0.0f,1.0f)]
     public float relativeNoHoleBoader = 0.2f;
 
-    // debug variables
+    public AudioClip good;
+    public AudioClip fail;
+
     // Private variables.
+    private AudioSource audioSource;
     private Vector3 holeSize;
     private Vector2 holePos;
     private GameController gc;
@@ -35,6 +38,7 @@ public class HoleWall : MonoBehaviour
     void Start()
     {
         gc = GameObject.Find("GameController").GetComponent<GameController>();
+        audioSource = GetComponent<AudioSource>();
         // Calculate hole size.
         
         holeSize = new Vector3(Random.Range(minHoleSize,maxHoleSize),Random.Range(minHoleSize,maxHoleSize),holeDepth);
@@ -65,9 +69,14 @@ public class HoleWall : MonoBehaviour
             col.gameObject.GetComponent<CharacterController>().isInput  = false;
             // calculate frication by hole and player size.
             float xFactor = col.transform.localScale.x - holeSize.x;
+            float yFactor = col.transform.localScale.y - holeSize.y;
+            yFactor = Mathf.Abs(yFactor);
+            yFactor = 0.8f - (yFactor/holeSize.y);
             xFactor = Mathf.Abs(xFactor);
-            xFactor = 1.0f - (xFactor/holeSize.x);
-            gc.HealthPoints += xFactor * frictionHealthGenerated;
+            xFactor = 0.8f - (xFactor/holeSize.x);
+            float factor = (yFactor + xFactor)/2 ;
+            gc.HealthPoints += factor * frictionHealthGenerated;
+            //Debug.Log(yFactor.ToString() + " x " + xFactor.ToString());
 
             // calculate damage
             float distance = Vector3.Distance(new Vector3(holePos.x,holePos.y,0),new Vector3(col.transform.position.x,col.transform.position.y,0));
@@ -79,7 +88,18 @@ public class HoleWall : MonoBehaviour
 
             gc.HealthPoints -= (damage * gc.maxHealthPoints);
             Debug.DrawLine(new Vector3(holePos.x,holePos.y,transform.position.z),col.transform.position,Color.red,1);
-            Debug.Log(damage);
+            // Playing audio
+            if (damage > 0.15f || factor < 0.35f)
+            {
+                audioSource.clip = fail;
+            }
+            else audioSource.clip = good;
+
+            audioSource.Play();
+            Debug.Log(factor);
+
+            // Apply score points
+            gc.Points += 1;
         }
     }
 
@@ -90,7 +110,6 @@ public class HoleWall : MonoBehaviour
             transform.root.GetComponent<ScenarySpawner>().passThrough = false;
             col.gameObject.GetComponent<CharacterController>().isInput = true;
             StartCoroutine(DelayDestroy());
-            gc.Points += 1;
         }
     }
 
