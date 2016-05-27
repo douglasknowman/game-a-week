@@ -90,6 +90,7 @@ public class HoleWall : MonoBehaviour
             transform.root.GetComponent<ScenarySpawner>().passThrough = false;
             col.gameObject.GetComponent<CharacterController>().isInput = true;
             StartCoroutine(DelayDestroy());
+            gc.Points += 1;
         }
     }
 

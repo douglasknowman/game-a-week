@@ -39,14 +39,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d81512fc23f7410dbfcbdb87c1bcfc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallSize: {x: 15, y: 15}
+  frictionHealthGenerated: 30
+  wallSize: {x: 18, y: 18}
   holeDepth: -2
   maxHoleSize: 5
   minHoleSize: 1
   uvMultiplier: 2
   material: {fileID: 2100000, guid: 70736ab8e592043ccbaa32bfeff6dc28, type: 2}
-  timeToDestroy: 3
-  relativeNoHoleBoader: 0.2
+  timeToDestroy: 1
+  relativeNoHoleBoader: 0.34
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

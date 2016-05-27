@@ -15,18 +15,30 @@ public class GameController : MonoBehaviour
 {
     // Public variables.
     public float maxHealthPoints = 100;
+    public float healthDecreaseBySecond = 1;
+    public GameObject gameOverScreen;
+
     public float HealthPoints 
     {
         get {return healthPoints;}
         set {
-            healthPoints = value < 0 ? 0 : value;
-            healthPoints = value > maxHealthPoints ? maxHealthPoints : value;
-            if (value < 0) GameOver();
+            if (value < 0)
+            {
+                GameOver();
+            }else if (value > maxHealthPoints)
+            {
+                healthPoints = maxHealthPoints;
+            }
+            else 
+            {
+                healthPoints = value;
+            }
         }
     }
     public int Points
     {
         get{return points;}
+        set{points = value;}
     }
     // Private variables.
     private float healthPoints;
@@ -34,17 +46,19 @@ public class GameController : MonoBehaviour
     // Unity functions.
     void Start()
     {
+        gameOverScreen.SetActive(false);
         healthPoints = maxHealthPoints;
     }
 
     void Update ()
     {
-        Debug.Log(healthPoints);
+        HealthPoints -= Time.deltaTime * healthDecreaseBySecond;
     }
       
     // GameController functions.
     void GameOver()
     {
-        
+        Time.timeScale = 0;
+        gameOverScreen.SetActive(true);
     }
 }

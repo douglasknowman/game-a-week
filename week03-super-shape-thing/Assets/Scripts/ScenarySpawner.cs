@@ -24,9 +24,9 @@ public class ScenarySpawner : MonoBehaviour
     // Private variables.
     private Transform wallx;
     private Transform wally;
-    private Transform bgx;
-    private Transform bgy;
-    private Transform bgz;
+    public  Transform bgx;
+    public  Transform bgy;
+    public  Transform bgz;
     // Unity functions.
     void Start()
     {
@@ -54,6 +54,22 @@ public class ScenarySpawner : MonoBehaviour
             wally = WallInstantiate(wallx);
         }
 
+        // moving background
+        if (bgx.position.z >16)
+        {
+            bgx.position = new Vector3(bgx.position.x,bgx.position.y,-32);
+        }
+        if (bgy.position.z >16)
+        {
+            bgy.position = new Vector3(bgy.position.x,bgy.position.y,-32);
+        }
+        if (bgz.position.z >16)
+        {
+            bgz.position = new Vector3(bgz.position.x,bgz.position.y,-32);
+        }
+        bgx.Translate(0,0,speed * Time.deltaTime);
+        bgy.Translate(0,0,speed * Time.deltaTime);
+        bgz.Translate(0,0,speed * Time.deltaTime);
     }
       
     // ScenarySpawner functions.
