@@ -19,7 +19,7 @@ public class HoleWall : MonoBehaviour
     public float holeDepth = -2f;
     public float maxHoleSize = 5f;
     public float minHoleSize = 1f;
-    [Range(0.5f,10)]
+    [Range(0.1f,10)]
     public float uvMultiplier = 2;
     public Material material;
     public float timeToDestroy = 4f;
@@ -68,14 +68,14 @@ public class HoleWall : MonoBehaviour
             transform.root.GetComponent<ScenarySpawner>().passThrough = true;
             col.gameObject.GetComponent<CharacterController>().isInput  = false;
             // calculate frication by hole and player size.
-            float xFactor = col.transform.localScale.x - holeSize.x;
-            float yFactor = col.transform.localScale.y - holeSize.y;
+            float xFactor = holeSize.x - col.transform.localScale.x ;
+            float yFactor = holeSize.y - col.transform.localScale.y ;
             yFactor = Mathf.Abs(yFactor);
-            yFactor = 0.8f - (yFactor/holeSize.y);
+            yFactor = 1 - yFactor;
             xFactor = Mathf.Abs(xFactor);
-            xFactor = 0.8f - (xFactor/holeSize.x);
+            xFactor = 1 - xFactor;
             float factor = (yFactor + xFactor)/2 ;
-            gc.HealthPoints += factor * frictionHealthGenerated;
+            gc.HealthPoints += Mathf.Clamp(factor,-0.2f,1f) * frictionHealthGenerated;
             //Debug.Log(yFactor.ToString() + " x " + xFactor.ToString());
 
             // calculate damage
@@ -89,14 +89,14 @@ public class HoleWall : MonoBehaviour
             gc.HealthPoints -= (damage * gc.maxHealthPoints);
             Debug.DrawLine(new Vector3(holePos.x,holePos.y,transform.position.z),col.transform.position,Color.red,1);
             // Playing audio
-            if (damage > 0.15f || factor < 0.35f)
+            if (damage > 0.15f || factor < 0.0f)
             {
                 audioSource.clip = fail;
             }
             else audioSource.clip = good;
 
             audioSource.Play();
-            Debug.Log(factor);
+            //Debug.Log(factor);
 
             // Apply score points
             gc.Points += 1;

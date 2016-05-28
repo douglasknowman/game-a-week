@@ -119,7 +119,7 @@ MonoBehaviour:
   holeDepth: -2
   maxHoleSize: 5
   minHoleSize: 1
-  uvMultiplier: 2
+  uvMultiplier: 0.1
   material: {fileID: 2100000, guid: 70736ab8e592043ccbaa32bfeff6dc28, type: 2}
   timeToDestroy: 1
   relativeNoHoleBoader: 0.2

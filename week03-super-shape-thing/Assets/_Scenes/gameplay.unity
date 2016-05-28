@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 182834, guid: 4dcda9bf34aa0427cb0b7cc3e4dba976, type: 2}
   wallDistance: 20
-  moveSpeed: 6
+  moveSpeed: 8
   passThroughSpeed: 5
   passThrough: 0
   bgx: {fileID: 1960352246}
@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
-  healthDecreaseBySecond: 3
+  healthDecreaseBySecond: 4
   gameOverScreen: {fileID: 1584236363}
 --- !u!1 &1942697580
 GameObject:
